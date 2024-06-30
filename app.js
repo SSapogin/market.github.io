@@ -130,7 +130,7 @@ function updateMainButton() {
 // Функция для загрузки данных о продуктах
 async function loadProducts() {
 	try {
-		let response = await fetch('http://localhost:4000/api/v1/products/');
+		let response = await fetch('http://http://147.45.184.84:4000/api/v1/products/');
 		if (response.ok) {
 			let products = await response.json();
 			let productList = document.getElementById('product-list');
