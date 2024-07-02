@@ -131,6 +131,7 @@ function updateMainButton() {
 async function loadProducts() {
 	try {
 		let response = await fetch('https://marketfather.ru/api/v1/products/');
+		alert(response)
 		if (response.ok) {
 			let products = await response.json();
 			let productList = document.getElementById('product-list');
@@ -140,9 +141,11 @@ async function loadProducts() {
 				productList.appendChild(productItem);
 			});
 		} else {
+			alert(response.statusText)
 			console.error('Ошибка загрузки продуктов:', response.statusText);
 		}
 	} catch (error) {
+		alert(error)
 		console.error('Ошибка загрузки продуктов:', error);
 	}
 }
