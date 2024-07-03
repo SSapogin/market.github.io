@@ -63,6 +63,7 @@ function updateProductItem(product) {
 		});
 
 		let countSpan = document.createElement('span');
+		countSpan.classList.add('counter-product');
 		countSpan.innerText = cart[product.id];
 
 		let plusButton = document.createElement('button');
@@ -73,7 +74,7 @@ function updateProductItem(product) {
 		});
 
 		counterDiv.appendChild(minusButton);
-		counterDiv.appendChild(countSpan);
+		itemDiv.appendChild(countSpan);
 		counterDiv.appendChild(plusButton);
 
 		itemDiv.appendChild(img);
@@ -147,11 +148,9 @@ async function loadProducts() {
 			});
 		} else {
 			console.error('Ошибка загрузки продуктов:', response.statusText);
-			alert(`Ошибка загрузки продуктов: ${response.statusText}`);
 		}
 	} catch (error) {
 		console.error('Ошибка загрузки продуктов:', error);
-		alert(`Ошибка загрузки продуктов: ${error.message}`);
 	}
 }
 
