@@ -131,12 +131,12 @@ function updateMainButton() {
 // Функция для загрузки данных о продуктах
 async function loadProducts() {
 	try {
-		let response = await fetch('https://marketfather.ru/api/v1/products/', {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json',
-			}
-		});
+		// let response = await fetch('https://marketfather.ru/api/v1/products/', {
+		// 	method: 'GET',
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	}
+		// });
 
 		if (response.ok) {
 			let products = await response.json();
