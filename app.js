@@ -121,7 +121,7 @@ function removeFromCart(product) {
 function updateMainButton() {
 	let totalItems = Object.values(cart).reduce((a, b) => a + b, 0);
 	if (totalItems > 0) {
-		tg.MainButton.setText(`Вы выбрали ${totalItems} товар(ов)`);
+		tg.MainButton.setText(`Оформить заказ`);
 		tg.MainButton.show();
 	} else {
 		tg.MainButton.hide();
@@ -154,12 +154,44 @@ async function loadProducts() {
 	}
 }
 
+// Функция для отображения страницы оформления заказа
+function showCheckoutPage() {
+	let mainContent = document.getElementById('main-content');
+	let checkoutPage = document.getElementById('checkout');
+	let totalPriceElement = document.getElementById('total-price');
+
+	let totalPrice = Object.keys(cart).reduce((total, productId) => {
+		let product = products.find(p => p.id == productId);
+		return total + (product.price * cart[productId]);
+	}, 0);
+
+	totalPriceElement.innerText = totalPrice;
+
+	mainContent.style.display = 'none';
+	checkoutPage.style.display = 'block';
+}
+
+// Функция для подтверждения заказа
+function confirmOrder() {
+	let address = document.getElementById('delivery-address').value;
+	if (address) {
+		tg.sendData(JSON.stringify({
+			cart: cart,
+			address: address
+		}));
+	} else {
+		alert('Введите адрес доставки.');
+	}
+}
+
 // Загрузка продуктов при загрузке страницы
 loadProducts();
 
 Telegram.WebApp.onEvent("mainButtonClicked", function() {
-	tg.sendData(JSON.stringify(cart));
+	showCheckoutPage();
 });
+
+document.getElementById('confirm-order').addEventListener('click', confirmOrder);
 
 let usercard = document.getElementById("usercard");
 

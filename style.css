@@ -70,15 +70,8 @@ body {
 	font-size: 13px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+.checkout {
+	display: none;
+	text-align: center;
+	padding: 20px;
+}

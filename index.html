@@ -10,13 +10,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
 </head>
 <body>
-<div class="container">
+
+<div class="container" id="main-content">
 	<div class="inner" id="product-list">
 		<!-- Продукты будут загружены сюда динамически -->
 	</div>
 </div>
+
 <div class="usercard" id="usercard">
 	<!-- Информация о пользователе -->
+</div>
+
+<div class="checkout" id="checkout" style="display: none;">
+	<h2>Оформление заказа</h2>
+	<p>Адрес доставки:</p>
+	<input type="text" id="delivery-address" placeholder="Введите адрес доставки">
+	<p>Предварительная стоимость: <span id="total-price">0</span>₽</p>
+	<button class="btn" id="confirm-order">Подтвердить заказ</button>
 </div>
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
